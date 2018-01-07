@@ -1,0 +1,31 @@
+version: '2'
+networks:
+    database:
+        driver: bridge
+services:
+    sources:
+      build: images/sources
+      volumes:
+        - .:/var/www/html/application
+
+    grpc:
+        build: images/grpc
+        volumes_from:
+          - sources
+        working_dir: /var/www/html/application
+        entrypoint: "run.sh"
+        env_file:
+          - images/grpc/main.env
+        ports:
+          - "8888:5550"
+        links:
+            - mongo
+        networks:
+            - database
+    mongo:
+        image: mongo:3.5
+        networks:
+            - database
+        environment:
+          - MONGO_INITDB_ROOT_USERNAME=historio
+          - MONGO_INITDB_ROOT_PASSWORD=historio2017

@@ -1,0 +1,8 @@
+mongoengine==0.15.0
+grpcio==1.7.0
+grpcio-tools==1.7.0
+mongomock
+unittest-data-provider==1.0.0
+python-json-logger
+pytest
+pytest-cov

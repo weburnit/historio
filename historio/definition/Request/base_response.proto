@@ -1,0 +1,6 @@
+syntax = "proto3";
+package base;
+
+message BaseResponse {
+    bool status = 1;
+}

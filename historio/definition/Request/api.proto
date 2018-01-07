@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+import "google/protobuf/struct.proto";
+
+service HistoryService {
+  rpc push (HistoryRequest) returns (BaseResponse);
+  rpc pull (HistoriesRequest) returns (ListHistories);
+}
+
+
+message BaseResponse {
+    bool status = 1;
+}
+
+message HistoryRequest {
+    string source = 1;
+    string source_id = 2;
+    string user_id = 3;
+    float timestamp = 4;
+    google.protobuf.Struct metadata = 5;
+    string action = 6;
+}
+message Pagination {
+    int32 total = 1;
+    int32 current_page = 2;
+    int32 display = 3;
+    float start = 4;
+    float end = 5;
+}
+
+message HistoriesRequest {
+    HistoryRequest query = 1;
+    Pagination pagination = 2;
+}
+
+message ListHistories {
+    repeated HistoryRequest results = 1;
+    Pagination pagination = 2;
+}

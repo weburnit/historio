@@ -1,0 +1,19 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+unittest-data-provider = "==1.0.0"
+pytest = "*"
+pytest-cov = "*"
+
+[packages]
+
+mongoengine = "==0.15.0"
+grpcio = "==1.7.0"
+grpcio-tools = "==1.7.0"
+python-json-logger = "*"
+mongomock = "*"
